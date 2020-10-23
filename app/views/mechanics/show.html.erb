@@ -12,7 +12,8 @@
 </section>
 
 <section class="add-ride">
-  <%= form_tag "/mechanics/#{@mechanic.id}", method: :patch do%>
+  <%= flash[:error] %>
+  <%= form_tag "/ride_mechanics/#{@mechanic.id}", method: :post do%>
     <%= label_tag "Add a ride to workload:" %>
     <%= text_field_tag :ride_search %>
     <%= submit_tag "Submit" %>
