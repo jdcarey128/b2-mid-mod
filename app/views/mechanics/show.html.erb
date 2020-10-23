@@ -13,7 +13,8 @@
 
 <section class="add-ride">
   <%= flash[:error] %>
-  <%= form_tag "/ride_mechanics/#{@mechanic.id}", method: :post do%>
+  <%= form_tag "/ride_mechanics", method: :post do%>
+    <%= hidden_field_tag :mechanic_id, @mechanic.id %>
     <%= label_tag "Add a ride to workload:" %>
     <%= text_field_tag :ride_search %>
     <%= submit_tag "Submit" %>
