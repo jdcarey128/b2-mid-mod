@@ -3,4 +3,8 @@ class Mechanic < ApplicationRecord
   has_many :rides, through: :ride_mechanics
   validates_presence_of :name, :years_of_experience
 
+  def alphabetized_rides
+    self.rides.order(:name)
+  end
+
 end

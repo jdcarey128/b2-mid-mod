@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a user', type: :feature do
   describe 'when I visit a mechanic show page' do
-    it "I see their name, experience, all the rides they are working on, and a form to submit a ride to their workload" do
+    it "I see their name, experience, all the alphabetized rides they are working on, and a form to submit a ride to their workload" do
       mechanic = Mechanic.create!(name: "Rudolf Green", years_of_experience: 25)
 
       amusement_park = AmusementPark.create!(name: "Cedar Point", admission_price: 75)
@@ -21,8 +21,8 @@ RSpec.describe 'As a user', type: :feature do
 
       within ".rides-working-on" do
         expect(page).to have_content("Current rides they're working on:")
-        expect(page).to have_content(raptor.name)
-        expect(page).to have_content(dragster.name)
+        expect(page.all('li')[0]).to have_content(dragster.name)
+        expect(page.all('li')[1]).to have_content(raptor.name)
         expect(page).to_not have_content(mf.name)
       end
 
