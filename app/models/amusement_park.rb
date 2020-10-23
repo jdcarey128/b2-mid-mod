@@ -6,4 +6,8 @@ class AmusementPark < ApplicationRecord
     "$" + self.admission_price.to_s + ".00"
   end
 
+  def rides_average_thrill_rating
+    self.rides.average(:thrill_rating)
+  end
+
 end
